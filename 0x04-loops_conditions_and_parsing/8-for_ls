@@ -5,13 +5,13 @@
 #In a list format
 #Where only the part of the name after the first dash is displayed (refer to the example)
 
-array=(`ls`)
+array=("$(ls)")
 
 len=${#array[*]}
 
 i=0
-while [ $i -lt $len ]; do
+while [ $i -lt "$len" ]; do
 value=${array[$i]#*-}
-echo "$value"
-let i++
+cut -d "-" -f2- <<<"$value"
+(( i++ ))
 done
